@@ -9,8 +9,9 @@ phases:
   build:
     commands:
       - echo "Iniciando build"
-      - docker build -t aws_repository_app/imagen_app:latest -f Dockerfile .
-      - docker push aws_repository_app/imagen_app:latest
+      - REPOSITORY_URI=$AWS_ID.dkr.ecr.eu-west-1.amazonaws.com/aws_repository_app
+      - docker build -t $REPOSITORY_URI:latest -f Dockerfile .
+      - docker push $REPOSITORY_URI:latest
   post_build:
     commands:
       - echo "Finalizando post-build"
