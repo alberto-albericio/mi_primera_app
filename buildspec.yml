@@ -16,7 +16,7 @@ phases:
     commands:
       - echo "Finalizando post-build"
       - echo "Realizando acciones posteriores al build"
-      - aws ecs update-service --cluster cluster_first_app --service service_first_app --force-new-deployment  # Forzar despliegue en ECS
+      
 
 artifacts:
   files:
