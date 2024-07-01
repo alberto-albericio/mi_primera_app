@@ -8,7 +8,7 @@ phases:
   build:
     commands:
       - echo "Iniciando build"
-      - docker build -t aws_repository_app/imagen_app:latest .
+      - docker build -t aws_repository_app/imagen_app:latest -f Dockerfile.
       - $(aws ecr get-login --no-include-email --region eu-west-1)  # Obtener acceso a ECR
       - docker push aws_repository_app/imagen_app:latest
   post_build:
