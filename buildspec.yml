@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 24.0.5  # Versión de Docker que quieres usar
+  pre_build:
+    commands:
+      - echo "Iniciando pre-build"
+      - echo "Instalando dependencias o configuraciones previas al build"
+  build:
+    commands:
+      - echo "Iniciando build"
+      - docker build -t aws_repository_app/imagen_app:latest .
+      - $(aws ecr get-login --no-include-email --region eu-west-1)  # Obtener acceso a ECR
+      - docker push aws_repository_app/imagen_app:latest
+  post_build:
+    commands:
+      - echo "Finalizando post-build"
+      - echo "Realizando acciones posteriores al build"
+      - aws ecs update-service --cluster cluster_first_app --service service_first_app --force-new-deployment  # Forzar despliegue en ECS
+
+artifacts:
+  files:
+    - '**/*'  # Incluye todos los archivos como artefactos del build
+
+
+
