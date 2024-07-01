@@ -1,9 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      docker: 24.0.5  # Versión de Docker que quieres usar
   pre_build:
     commands:
       - echo "Iniciando pre-build"
