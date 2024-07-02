@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - echo "Iniciando build"
-      - REPOSITORY_URI=$AWS_ID.dkr.ecr.eu-west-1.amazonaws.com/aws_repository_app
+      - REPOSITORY_URI=$AWS_ID.dkr.ecr.eu-south-2.amazonaws.com/first_app_spain
       - docker build -t $REPOSITORY_URI:latest -f Dockerfile .
       - docker push $REPOSITORY_URI:latest
   post_build:
