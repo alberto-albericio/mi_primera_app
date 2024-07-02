@@ -22,5 +22,4 @@ EXPOSE 8000
 # Comando para ejecutar la aplicación
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.wsgi:application"]
 
-while sleep 60; do	
-	echo "One of the processes has already exited."
+
