@@ -5,11 +5,11 @@ phases:
     commands:
       - echo "Iniciando pre-build"
       - echo "Instalando dependencias o configuraciones previas al build"
-      - aws --region eu-west-1 ecr get-login-password | docker login --username AWS --password-stdin $AWS_ID.dkr.ecr.eu-west-1.amazonaws.com
+      - aws --region eu-south-2 ecr get-login-password | docker login --username AWS --password-stdin $AWS_ID.dkr.ecr.eu-south-2.amazonaws.com
   build:
     commands:
       - echo "Iniciando build"
-      - REPOSITORY_URI=$AWS_ID.dkr.ecr.eu-west-1.amazonaws.com/aws_repository_app
+      - REPOSITORY_URI=$AWS_ID.dkr.ecr.eu-south-2.amazonaws.com/first_app_spain
       - docker build -t $REPOSITORY_URI:latest -f Dockerfile .
       - docker push $REPOSITORY_URI:latest
   post_build:
